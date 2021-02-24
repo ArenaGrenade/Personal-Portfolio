@@ -1,4 +1,4 @@
-import { useResource, useFrame } from "react-three-fiber"
+import { useResource, useFrame, useThree } from "react-three-fiber"
 import { vertexShader, fragmentShader } from "./shaders"
 import * as THREE from "three"
 
@@ -7,6 +7,7 @@ const RenderPlane = props => {
     const meshRef = useResource();
     const materialRef = useResource();
     const helper = useResource();
+    const {clock} = useThree();
 
     useFrame(({camera}) => {
         meshRef.current?.position.set(0, 0, 0);
@@ -20,6 +21,7 @@ const RenderPlane = props => {
             const new_uniforms = {
                 resolution: new THREE.Vector2(min_window_square_size, min_window_square_size),
                 viewportSize: new THREE.Vector2(window.innerWidth, window.innerHeight),
+                time: clock.elapsedTime,
             }
             for (const [key, value] of Object.entries(new_uniforms)) {
                 materialRef.current.userData.shader.uniforms[key].value = value
@@ -35,6 +37,7 @@ const RenderPlane = props => {
                     uniforms: {
                         resolution: { value: new THREE.Vector2(min_window_square_size, min_window_square_size) },
                         viewportSize: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                        time: { value: clock.elapsedTime },
                     },
                     vertexShader,
                     fragmentShader,
