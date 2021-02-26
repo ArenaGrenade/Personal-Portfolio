@@ -6,25 +6,26 @@ const RenderPlane = props => {
     const min_window_square_size = Math.min(window.innerWidth, window.innerHeight);
     const meshRef = useResource();
     const materialRef = useResource();
-    const helper = useResource();
     const {clock} = useThree();
 
+    const shader = true;
+
     useFrame(({camera}) => {
-        meshRef.current?.position.set(0, 0, 0);
-        helper.current?.update();
-        camera.updateProjectionMatrix();
+        meshRef.current?.position.set(0, props.y, 0);
 
-        materialRef.current.onBeforeCompile = shader => materialRef.current.userData.shader = shader;
-
-        if (materialRef.current.userData.shader) {
-            const min_window_square_size = Math.min(window.innerWidth, window.innerHeight);
-            const new_uniforms = {
-                resolution: new THREE.Vector2(min_window_square_size, min_window_square_size),
-                viewportSize: new THREE.Vector2(window.innerWidth, window.innerHeight),
-                time: clock.elapsedTime,
-            }
-            for (const [key, value] of Object.entries(new_uniforms)) {
-                materialRef.current.userData.shader.uniforms[key].value = value
+        if (shader) {
+            materialRef.current.onBeforeCompile = shader => materialRef.current.userData.shader = shader;
+    
+            if (materialRef.current.userData.shader) {
+                const min_window_square_size = Math.min(window.innerWidth, window.innerHeight);
+                const new_uniforms = {
+                    resolution: new THREE.Vector2(min_window_square_size, min_window_square_size),
+                    viewportSize: new THREE.Vector2(window.innerWidth, window.innerHeight),
+                    time: clock.elapsedTime,
+                }
+                for (const [key, value] of Object.entries(new_uniforms)) {
+                    materialRef.current.userData.shader.uniforms[key].value = value
+                }
             }
         }
     })
@@ -32,18 +33,19 @@ const RenderPlane = props => {
     return(
         <>
             <mesh ref={meshRef}>
-                <planeGeometry args={[2, 2]} />
-                <rawShaderMaterial args={[{
-                    uniforms: {
-                        resolution: { value: new THREE.Vector2(min_window_square_size, min_window_square_size) },
-                        viewportSize: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-                        time: { value: clock.elapsedTime },
-                    },
-                    vertexShader,
-                    fragmentShader,
-                }]} ref={materialRef} />
+                <planeGeometry args={[3, 3, 3]} />
+                {shader?
+                    <rawShaderMaterial args={[{
+                        uniforms: {
+                            resolution: { value: new THREE.Vector2(min_window_square_size, min_window_square_size) },
+                            viewportSize: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+                            time: { value: clock.elapsedTime },
+                        },
+                        vertexShader,
+                        fragmentShader,
+                    }]} ref={materialRef} />
+                : <meshBasicMaterial args={[{color: 0xFFFF00}]} />}
             </mesh>
-            {meshRef.current && <boxHelper args={[meshRef.current, 0xffff00]} ref={helper} />}
         </>
     )
 }

@@ -1,8 +1,15 @@
 export const vertexShader = `
     attribute vec3 position;
+    attribute vec2 uv;
+
+    uniform mat4 modelViewMatrix;
+    uniform mat4 projectionMatrix;
+
+    varying vec2 uVu;
 
     void main(void) {
-        gl_Position = vec4(position, 1.0);
+        uVu = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
 `
 
@@ -14,6 +21,8 @@ export const fragmentShader = `
     uniform vec2 resolution;
     uniform vec2 viewportSize;
     uniform float time;
+
+    varying vec2 uVu;
 
     #define NUM_OCTAVES 3
     #define SPEED_SCALE 0.3
@@ -88,7 +97,7 @@ export const fragmentShader = `
 
     void main(void)
     {
-        vec2 uv = (gl_FragCoord.xy - 0.5 * viewportSize) / resolution;
+        vec2 uv = uVu.xy * 4.2;
         float density = warp(uv);
         
         vec3 col = vec3(0.0);

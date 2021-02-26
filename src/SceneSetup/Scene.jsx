@@ -1,31 +1,39 @@
-import { useThree } from "react-three-fiber";
+import { useThree, useFrame, useResource } from "react-three-fiber";
 import { useEffect } from "react";
+import { useTransform, useViewportScroll } from "framer-motion"
 
-import RenderPlane from "./RenderPlane";
+import GalleryPlane from "./GalleryPlane";
 
 const Scene = props => {
-    // Some comment here
-    const { gl, camera, forceResize } = useThree();
+    const { gl, camera } = useThree();
+    const pathRef = useResource();
+    const { scrollYProgress } = useViewportScroll()
+    const cameraPositionZ = useTransform(scrollYProgress, [0, 1], [0.6, 3.5])
+    const cameraRotationY = useTransform(scrollYProgress, [0, 1], [0, -0.1 * Math.PI])
 
     useEffect(() => {
-        camera.near = 0;
-        camera.far = 1;
-        camera.position.set(0, 0, 0);
-
-        // Some comment here
+        camera.near = 0.1;
+        camera.far = 1000;
+        camera.fov = 75;
         camera.updateProjectionMatrix();
-
         gl.setSize(window.innerWidth, window.innerHeight);
         gl.setPixelRatio(window.devicePixelRatio);
-        forceResize();
     // eslint-disable-next-line
     }, []);
 
+    useFrame(({gl, camera}) => {
+        gl.setSize(window.innerWidth, window.innerHeight);
+        gl.setPixelRatio(window.devicePixelRatio);
+
+        camera.position.set(0, 0, cameraPositionZ.current);
+        camera.rotation.set(0, cameraRotationY.current, 0);
+    })
+
     return (
         <>
-            <RenderPlane />
-            <axesHelper args={[300]} />
-            {/*<cameraHelper args={[camera]} />*/}
+            <GalleryPlane y={0} />
+            {/*<axesHelper />*/}
+            <path ref={pathRef} />
         </>
     )
 };
