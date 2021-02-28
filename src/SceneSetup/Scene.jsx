@@ -1,5 +1,5 @@
 import { useThree, useFrame, useResource } from "react-three-fiber";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useTransform, useViewportScroll } from "framer-motion"
 
 import GalleryPlane from "./GalleryPlane";
@@ -8,7 +8,7 @@ const Scene = props => {
     const { gl, camera } = useThree();
     const pathRef = useResource();
     const { scrollYProgress } = useViewportScroll()
-    const cameraPositionZ = useTransform(scrollYProgress, [0, 1], [0.6, 3.5])
+    const cameraPositionZ = useTransform(scrollYProgress, [0, 1], [1.2, 3.5])
     const cameraRotationY = useTransform(scrollYProgress, [0, 1], [0, -0.1 * Math.PI])
 
     useEffect(() => {
@@ -30,8 +30,10 @@ const Scene = props => {
     })
 
     return (
-        <>
-            <GalleryPlane y={0} />
+        <> 
+            <Suspense fallback={null}>
+                <GalleryPlane />
+            </Suspense>
             {/*<axesHelper />*/}
             <path ref={pathRef} />
         </>

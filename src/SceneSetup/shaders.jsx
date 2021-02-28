@@ -17,9 +17,6 @@ export const fragmentShader = `
     #define PI 3.142
 
     precision highp float;
-
-    uniform vec2 resolution;
-    uniform vec2 viewportSize;
     uniform float time;
 
     varying vec2 uVu;
