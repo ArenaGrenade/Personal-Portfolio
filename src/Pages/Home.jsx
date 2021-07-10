@@ -32,7 +32,9 @@ const Home = () => {
                 animate={{opacity: 1}}
                 transition={{duration: 1.25, type: "tween", delay: 2.5}}
             >
-                <motion.p className="side-button no-select" style={{color: sideBarColorsAnim}}>About Me</motion.p>
+                <motion.p className="side-button no-select" style={{color: sideBarColorsAnim}}><a href="https://github.com/ArenaGrenade/ArenaGrenade.github.io/blob/main/files/Rohan_Asokan_Resume_SWE.pdf?raw=true" className="side-button-content" download>
+                    Resume
+                </a></motion.p>
             </motion.div>
             <motion.div 
                 id="email-button-container" 
