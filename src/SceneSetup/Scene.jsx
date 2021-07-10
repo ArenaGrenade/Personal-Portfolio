@@ -8,7 +8,7 @@ const Scene = props => {
     const { gl, camera } = useThree();
     const pathRef = useResource();
     const { scrollYProgress } = useViewportScroll()
-    const cameraPositionZ = useTransform(scrollYProgress, [0, 1], [1.2, 3.5])
+    const cameraPositionZ = useTransform(scrollYProgress, [0, 1], [1, 3.5])
     const cameraRotationY = useTransform(scrollYProgress, [0, 1], [0, -0.1 * Math.PI])
 
     useEffect(() => {

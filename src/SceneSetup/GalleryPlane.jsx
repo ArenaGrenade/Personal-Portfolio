@@ -17,7 +17,7 @@ const GalleryPlane = props => {
 
     return (
         <>
-            <RenderPlane image={texture} />
+            <RenderPlane />
             <rectAreaLight ref={lightRef} args={[0x0184a9, 3, 4, 1]} />
             <mesh ref={meshRef}>
                 <planeGeometry args={[5, 5]} />

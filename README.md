@@ -60,4 +60,4 @@ E-mail: rohan.asokan@students.iiit.ac.in
 [linkedin-url]: https://linkedin.com/in/rohan-asokan
 
 <!--Project Image-->
-[product-screenshot]: ./images/project-screenshot.png
+[product-screenshot]: ./files/project-screenshot.png
