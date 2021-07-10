@@ -1,6 +1,5 @@
 {
   "name": "react-webgl-shading-template",
-  "homepage": "https://arenagrenade.github.io/portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
