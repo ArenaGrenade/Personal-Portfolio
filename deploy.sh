@@ -10,7 +10,7 @@ yarn run build
 cd build
 
 # if you are deploying to a custom domain
-echo 'web.rohan-asokan.tech' > CNAME
+# echo 'arenagrenade.github.io' > CNAME
 
 git init
 git add -A
