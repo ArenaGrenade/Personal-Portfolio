@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "https://arenagrenade.github.io/portfolio/static/css/main.5b6a5e53.chunk.css",
+    "main.js": "https://arenagrenade.github.io/portfolio/static/js/main.7687eb6d.chunk.js",
+    "main.js.map": "https://arenagrenade.github.io/portfolio/static/js/main.7687eb6d.chunk.js.map",
+    "runtime-main.js": "https://arenagrenade.github.io/portfolio/static/js/runtime-main.b87f3144.js",
+    "runtime-main.js.map": "https://arenagrenade.github.io/portfolio/static/js/runtime-main.b87f3144.js.map",
+    "static/css/2.150d169a.chunk.css": "https://arenagrenade.github.io/portfolio/static/css/2.150d169a.chunk.css",
+    "static/js/2.f019b898.chunk.js": "https://arenagrenade.github.io/portfolio/static/js/2.f019b898.chunk.js",
+    "static/js/2.f019b898.chunk.js.map": "https://arenagrenade.github.io/portfolio/static/js/2.f019b898.chunk.js.map",
+    "static/js/3.ad7b4704.chunk.js": "https://arenagrenade.github.io/portfolio/static/js/3.ad7b4704.chunk.js",
+    "static/js/3.ad7b4704.chunk.js.map": "https://arenagrenade.github.io/portfolio/static/js/3.ad7b4704.chunk.js.map",
+    "index.html": "https://arenagrenade.github.io/portfolio/index.html",
+    "static/css/2.150d169a.chunk.css.map": "https://arenagrenade.github.io/portfolio/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.5b6a5e53.chunk.css.map": "https://arenagrenade.github.io/portfolio/static/css/main.5b6a5e53.chunk.css.map",
+    "static/js/2.f019b898.chunk.js.LICENSE.txt": "https://arenagrenade.github.io/portfolio/static/js/2.f019b898.chunk.js.LICENSE.txt",
+    "static/media/img1.b6d3a9b6.jpg": "https://arenagrenade.github.io/portfolio/static/media/img1.b6d3a9b6.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b87f3144.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.f019b898.chunk.js",
+    "static/css/main.5b6a5e53.chunk.css",
+    "static/js/main.7687eb6d.chunk.js"
+  ]
+}
